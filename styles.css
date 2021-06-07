@@ -1,0 +1,38 @@
+*{
+	font-family: helvetica;
+}
+body{
+		background-image: radial-gradient(lightblue, lightgreen);
+		background-position: left;
+		background-size: cover;
+		font-family: 'Century Gothic';
+		padding-top: 30px;
+
+	}
+input[type="text"], input[type="password"]{
+	width: 190px;
+	min-height: 25px;
+	display: block;
+	margin-left: 90px;
+	margin-top: -20px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	padding-left: 20px;
+}
+input[type="submit"]{
+	display: block;
+}
+input[type="radio"], input[type="submit"] {
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+form{
+	margin: 0 auto;
+	width: 300px;
+	border: 1px solid black;
+	border-radius: 20px;
+	padding: 20px;
+}
+h2{
+	margin-left: 420px;
+}

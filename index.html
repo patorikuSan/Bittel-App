@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bittel Login</title>
+	<style type="text/css">
+		body{
+			/*background-image: url('sun.jpg');*/
+			background-image: radial-gradient(lightblue, lightgreen);
+			background-position: left;
+			background-size: cover;
+			font-family: 'Century Gothic';
+			padding-top: 130px;
+
+		}
+
+		#mainbox {
+			padding-top: 40px;
+			border-radius: 10px;
+			border: 1px solid #ddd;
+			background-color: rgba(221,221,221,53%);
+			padding: 20px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,53%);
+			width: 400px;
+			height: 250px;
+		}
+		#mainbox p {
+			font-family: 'arial';
+			font-size: 16px;
+		}
+
+		input[type=text], input[type=password] {
+			background-color: rgba(221,221,221,0%);
+			border: 0;
+			border-bottom: 1px solid #585757;
+			width: 180px;
+			padding: 4px;
+			font-size: 20px;
+			color: black;
+
+		}
+
+		button {
+			border-radius: 12px;
+			border:0;
+			padding: 10px;
+			font-size: 14px;
+		}
+
+		button:hover {
+			background-color: #6699cc;
+			color: white;
+			border:1px solid white;
+		}
+	</style>
+	<script type="text/javascript">
+
+	window.onload = function(){
+		document.addEventListener("contextmenu", event => preventDefault());
+	}
+		var attempts = 3;
+		function myFunction() {
+			var x,y, text;
+			// var attempts = 0;
+			x = document.getElementById("uname").value;
+			y = document.getElementById("pword").value;
+			document.getElementById("demo").innerHTML = text;
+
+			// for(var attempts = 3; attempts > 0; attempts--){
+				if (x == 'test' && y == 'test23'){
+					text = "Valid credentials."
+					window.location.replace("create.php");
+				} else {
+
+					attempts--;
+					document.getElementById("demo").innerHTML =
+					"Invalid credentials. You have "+ attempts +" attempts before lockout."
+
+				if(attempts == 0){
+					document.getElementById("demo").innerHTML ="You have exceeded allowable attempts. Account lockout.<br>"
+					var timeleft = 5;
+					var downloadTimer = setInterval(function(){
+						document.getElementById("uname").disabled = true;
+						document.getElementById("pword").disabled = true;
+						document.getElementById("Login").disabled = true;
+						document.getElementById("Reset").disabled = true;
+
+						timeleft-=1;
+						document.getElementById("demo").innerHTML ="Remaining " + timeleft + " To log back.";
+						if(timeleft == 0){
+							clearInterval(downloadTimer);
+							window.location.replace("index.html");
+						}
+					}, 1000)
+
+
+					}
+				}
+
+		}
+
+		function reset() {
+				document.getElementById("uname").value="";
+				document.getElementById("pword").value="";
+				document.getElementById("uname").disabled = false;
+				document.getElementById("pword").disabled = false;
+				text = "Form reset. Please log in.";
+
+				document.getElementById("demo").innerHTML = text;
+		}
+	</script>
+</head>
+<body oncontextmenu="return false"; oncopy="return false"; oncut="return false"; >
+<center>
+	<h2>Bittel (beta)</h2>
+	<h5>user: test || pass: test23</h5>
+	<div id="mainbox">
+		<p>Please input a valid username and password.</p>
+			Username: <input type="text" id="uname"><br><br>
+			&nbsp; Password: <input type="password" id="pword"><br><br>
+
+			<button type="button" onclick="myFunction()" id="Login">Submit</button>
+
+			<button type="reset" onclick="reset()" id="Reset">Reset</button>
+			<h3 id="demo"></h3>
+	</div>
+</center>
+</body>
+</html>
